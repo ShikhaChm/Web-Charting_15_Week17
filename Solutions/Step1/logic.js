@@ -1,4 +1,3 @@
-// We create the tile layer that will be the background of our map.
 console.log("working");
 
 var apiKey = "924783bda048569443e49dd6a03e5591";
@@ -10,7 +9,6 @@ var graymap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?
   accessToken: apiKey
 });
 
-// We create the map object with options.
 var map = L.map("mapid", {
   center: [
     40.7, -94.5
@@ -18,10 +16,9 @@ var map = L.map("mapid", {
   zoom: 3
 });
 
-// Then we add our 'graymap' tile layer to the map.
 graymap.addTo(map);
 
-// Here we make an AJAX call that retrieves our earthquake geoJSON data.
+// make an AJAX call that retrieves our earthquake geoJSON data.
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson", function(data) {
 
   // This function returns the style data for each of the earthquakes we plot on
@@ -39,7 +36,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
     };
   }
 
-  // This function determines the color of the marker based on the magnitude of the earthquake.
+  // function determining the color of the marker based on the magnitude of the earthquake.
   function getColor(magnitude) {
     switch (true) {
     case magnitude > 5:
